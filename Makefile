@@ -15,11 +15,11 @@ all: main test
 %.o : %.c
 	$(CC) -c $(CCFLAGS) $<
 
-main: main.o fileio.o
-	$(CC) -o main main.o fileio.o
+main: main.o fileio.o junzip.o
+	$(CC) -o main main.o fileio.o -lcurl
 
 test: main
 	./main
 
 clean:
-	rm -rf  *.o main build/
+	rm -rf  *.o main build/ *.zip *.txt
