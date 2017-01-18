@@ -2,19 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-const char* get_url_from_config();
+void get_url_from_config(char*);
 
 int fileio_run()
 {
-	get_url_from_config();
+	char url;
+	get_url_from_config(&url); // Pass in the memory address of url
 	//printf("URL: %d", get_url_from_config());
 	return 0;
 }
 
-const char* get_url_from_config()
+void get_url_from_config(char *url)
 {
 	char ch;
-	char *file_name = "config.conf";
+	char *file_name = "config.conf"; // Which filename to read.
 
 	FILE *fp;
 
@@ -27,11 +28,9 @@ const char* get_url_from_config()
 	   exit(EXIT_FAILURE);
 	}
 
-	/* printf("The contents of %s file are :\n", file_name); */
-
 	while( ( ch = fgetc(fp) ) != EOF )
-	   //printf("%c",ch);
-
+	   //printf("%c",ch); // Prints out the content of the file.
+	*url = ch; // Dereference url and assign it the value of ch from function.
 	fclose(fp);
-	return 0;
+	//return 0;
 }
