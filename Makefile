@@ -22,4 +22,4 @@ test: main
 	./main
 
 clean:
-	rm *.o
+	rm -rf  *.o main build/
