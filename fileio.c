@@ -2,48 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 
-void get_url_from_config(char*);
-char url;
+//Create a structure to hold file information.
+typedef struct{
+  char* url;
+} file_t;
 
-void fileio_run()
+file_t* new_file(void);
+
+char fileio()
 {
+	// Declare a pointer to a file stucture. `ptr` will hold the memory address of a structure.
+	file_t *ptr;
+	ptr = new_file();
 	
-	//printf("Address of url: %p\n", &url);
-	//printf("Content of address: %c\n", url);
-	get_url_from_config(&url); // Pass in the memory address of url
-	//printf("URL: %c\n", *url);
+	// Now that `ptr` has the memory address of the file structure. We can perform operations on
+	// *ptr just like we would on any other structure. In this case the assignment to another structure variable.
 	
-	printf("Memory address of url outside functions: %p\n", &url);
-	printf("%c", url);
-	printf("%s\n", "---------------------------");
+	file_t file = *ptr;
 	
-	//return 0;
+	strcpy(file.url, "The URL!");
+	//file.url = 10;
+	return 0;
 }
-
-void get_url_from_config(char *url)
+file_t* new_file(void)
 {
-	char ch;
-	char *file_name = "config.conf"; // Which filename to read.
-
-	FILE *fp;
-
-	fp = fopen(file_name,"r"); // read mode
-
-	// Catch and see if the file is null and display an error.
-	if( fp == NULL )
-	{
-	   perror("Error while opening the file.\n");
-	   exit(EXIT_FAILURE);
-	}
-
-	while( ( ch = fgetc(fp) ) != EOF )
-		*url = printf("%c", ch); // Prints out the content of the file.
-		printf("Memory address of ch inside function: %p\n", &ch);
-		//*url = ch; // Dereference url and assign it the value of ch from function.
-		//printf("%s", *url);	
-		printf("Memory address of url inside functions: %p\n", &url);
-		printf("%s\n", "---------------------------");
-		
-	fclose(fp);
-	//return 0;
+	// Allocate the exact right ammount of memory for the file structure.
+	// Due to how the sizeof operator works, we can get a "shortcut" and get 
+	// the number of bytes needed without aving to specify the file_t type to sizeof.
+	file_t *p = malloc(sizeof *p);
+	return p;
 }
