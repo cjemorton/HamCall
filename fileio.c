@@ -3,13 +3,21 @@
 #include <string.h>
 
 void get_url_from_config(char*);
+char url;
 
-int fileio_run()
+void fileio_run()
 {
-	char url;
+	
+	//printf("Address of url: %p\n", &url);
+	//printf("Content of address: %c\n", url);
 	get_url_from_config(&url); // Pass in the memory address of url
-	//printf("URL: %d", get_url_from_config());
-	return 0;
+	//printf("URL: %c\n", *url);
+	
+	printf("Memory address of url outside functions: %p\n", &url);
+	printf("%c", url);
+	printf("%s\n", "---------------------------");
+	
+	//return 0;
 }
 
 void get_url_from_config(char *url)
@@ -29,8 +37,13 @@ void get_url_from_config(char *url)
 	}
 
 	while( ( ch = fgetc(fp) ) != EOF )
-	   //printf("%c",ch); // Prints out the content of the file.
-	*url = ch; // Dereference url and assign it the value of ch from function.
+		*url = printf("%c", ch); // Prints out the content of the file.
+		printf("Memory address of ch inside function: %p\n", &ch);
+		//*url = ch; // Dereference url and assign it the value of ch from function.
+		//printf("%s", *url);	
+		printf("Memory address of url inside functions: %p\n", &url);
+		printf("%s\n", "---------------------------");
+		
 	fclose(fp);
 	//return 0;
 }

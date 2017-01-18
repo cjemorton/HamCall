@@ -4,6 +4,8 @@
 #define FILEIO_H
 
 int timesTwo(int n);
-int fileio_run();
+void fileio_run(char*);
+
+extern char url;
 
 #endif
