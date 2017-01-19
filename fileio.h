@@ -5,5 +5,5 @@
 
 //int timesTwo(int n);
 int file_get(const char* url, const char* file_name);
-
+int file_exist(const char *filename);
 #endif

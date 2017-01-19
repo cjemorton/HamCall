@@ -15,7 +15,7 @@ all: main test
 %.o : %.c
 	$(CC) -c $(CCFLAGS) $<
 
-main: main.o fileio.o junzip.o
+main: main.o fileio.o
 	$(CC) -o main main.o fileio.o -lcurl
 
 test: main
