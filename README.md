@@ -6,3 +6,5 @@ Canadian Ham Radio Callsign Lookup Script
 Dependencies.
 
 - For Debian systems run: `apt-get install libcurl4-openssl-dev` to install curl libraries.
+
+-- NOTE: Check out - https://youtu.be/PQF_IU2YXIg
