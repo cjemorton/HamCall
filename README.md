@@ -8,3 +8,9 @@ Dependencies.
 - For Debian systems run: `apt-get install libcurl4-openssl-dev` to install curl libraries.
 
 -- NOTE: Check out - https://youtu.be/PQF_IU2YXIg
+
+
+-- NOTE: This program could be reimplemented in crystal.
+  - Download the zip file of callsigns.
+  - Store the content of the zip file in REDIS database.
+  - Query the database for callsigns.
